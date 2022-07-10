@@ -9,7 +9,7 @@ using System.Data.SqlTypes;
 
 namespace CamadaDado
 {
-    internal class DCategoria
+    public class DCategoria
     {
         public int IdCategoria { get; set; }
         public string Nome { get; set; }
@@ -107,6 +107,7 @@ namespace CamadaDado
                     resp = "A conexão não foi aberta, não é possível ser fechada!! ";
                 }
             }
+            return resp;
         }
 
         // Método Editar
@@ -163,6 +164,7 @@ namespace CamadaDado
                     resp = "A conexão não foi aberta, não é possível ser fechada!! ";
                 }
             }
+            return resp;
         }
         
 
@@ -204,11 +206,12 @@ namespace CamadaDado
             {
                 resp = "A conexão não foi aberta, não é possível ser fechada!! ";
             }
-        }
+        } 
+          return resp;
     }
     
         // Método mostrar
-        public DataTable Mostrar(DCategoria)
+        public DataTable Mostrar()
         {
             DataTable dtResultado = new DataTable();
             SqlConnection SqlCon = new SqlConnection();
@@ -227,6 +230,7 @@ namespace CamadaDado
                 dtResultado = null;
                 throw;
             }
+            return dtResultado;
         }
 
         // Método Buscar
@@ -256,6 +260,7 @@ namespace CamadaDado
                 dtResultado = null;
                 throw;
             }
+            return dtResultado;
         }
     }
 }

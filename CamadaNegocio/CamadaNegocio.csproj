@@ -7,4 +7,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CamadaApresentacao\CamadaApresentacao.csproj" />
+    <ProjectReference Include="..\CamadaDado\CamadaDado.csproj" />
+  </ItemGroup>
+
 </Project>
