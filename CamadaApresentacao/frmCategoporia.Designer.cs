@@ -36,22 +36,22 @@
             this.chkDeletar = new System.Windows.Forms.CheckBox();
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnImprimir = new System.Windows.Forms.Button();
-            this.bntDeletar = new System.Windows.Forms.Button();
+            this.btnDeletar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblNomeBuscar = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblIdcategoria = new System.Windows.Forms.Label();
-            this.lblNome = new System.Windows.Forms.Label();
-            this.lblDescricao = new System.Windows.Forms.Label();
-            this.txtIdCategoria = new System.Windows.Forms.TextBox();
-            this.txtDescricao = new System.Windows.Forms.TextBox();
-            this.txtNome = new System.Windows.Forms.TextBox();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnSalvar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
+            this.txtIdCategoria = new System.Windows.Forms.TextBox();
+            this.lblDescricao = new System.Windows.Forms.Label();
+            this.lblNome = new System.Windows.Forms.Label();
+            this.lblIdcategoria = new System.Windows.Forms.Label();
             this.errorIcone = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttMensagem = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
@@ -78,7 +78,7 @@
             this.tabPage1.Controls.Add(this.chkDeletar);
             this.tabPage1.Controls.Add(this.lblTotal);
             this.tabPage1.Controls.Add(this.btnImprimir);
-            this.tabPage1.Controls.Add(this.bntDeletar);
+            this.tabPage1.Controls.Add(this.btnDeletar);
             this.tabPage1.Controls.Add(this.btnBuscar);
             this.tabPage1.Controls.Add(this.txtBuscar);
             this.tabPage1.Controls.Add(this.lblNomeBuscar);
@@ -144,14 +144,14 @@
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.UseVisualStyleBackColor = true;
             // 
-            // bntDeletar
+            // btnDeletar
             // 
-            this.bntDeletar.Location = new System.Drawing.Point(356, 31);
-            this.bntDeletar.Name = "bntDeletar";
-            this.bntDeletar.Size = new System.Drawing.Size(75, 23);
-            this.bntDeletar.TabIndex = 7;
-            this.bntDeletar.Text = "Deletar ";
-            this.bntDeletar.UseVisualStyleBackColor = true;
+            this.btnDeletar.Location = new System.Drawing.Point(356, 31);
+            this.btnDeletar.Name = "btnDeletar";
+            this.btnDeletar.Size = new System.Drawing.Size(75, 23);
+            this.btnDeletar.TabIndex = 7;
+            this.btnDeletar.Text = "Deletar ";
+            this.btnDeletar.UseVisualStyleBackColor = true;
             // 
             // btnBuscar
             // 
@@ -209,73 +209,16 @@
             this.groupBox1.Text = "Categoria";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // lblIdcategoria
+            // btnCancelar
             // 
-            this.lblIdcategoria.AutoSize = true;
-            this.lblIdcategoria.Location = new System.Drawing.Point(7, 36);
-            this.lblIdcategoria.Name = "lblIdcategoria";
-            this.lblIdcategoria.Size = new System.Drawing.Size(46, 15);
-            this.lblIdcategoria.TabIndex = 0;
-            this.lblIdcategoria.Text = "Código";
-            // 
-            // lblNome
-            // 
-            this.lblNome.AutoSize = true;
-            this.lblNome.Location = new System.Drawing.Point(12, 65);
-            this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(40, 15);
-            this.lblNome.TabIndex = 1;
-            this.lblNome.Text = "Nome";
-            // 
-            // lblDescricao
-            // 
-            this.lblDescricao.AutoSize = true;
-            this.lblDescricao.Location = new System.Drawing.Point(2, 94);
-            this.lblDescricao.Name = "lblDescricao";
-            this.lblDescricao.Size = new System.Drawing.Size(58, 15);
-            this.lblDescricao.TabIndex = 2;
-            this.lblDescricao.Text = "Descrição";
-            // 
-            // txtIdCategoria
-            // 
-            this.txtIdCategoria.Location = new System.Drawing.Point(61, 31);
-            this.txtIdCategoria.Name = "txtIdCategoria";
-            this.txtIdCategoria.Size = new System.Drawing.Size(193, 23);
-            this.txtIdCategoria.TabIndex = 3;
-            // 
-            // txtDescricao
-            // 
-            this.txtDescricao.Location = new System.Drawing.Point(61, 89);
-            this.txtDescricao.Multiline = true;
-            this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDescricao.Size = new System.Drawing.Size(274, 33);
-            this.txtDescricao.TabIndex = 4;
-            // 
-            // txtNome
-            // 
-            this.txtNome.Location = new System.Drawing.Point(61, 60);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(193, 23);
-            this.txtNome.TabIndex = 5;
-            // 
-            // btnNovo
-            // 
-            this.btnNovo.Location = new System.Drawing.Point(17, 157);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(75, 23);
-            this.btnNovo.TabIndex = 6;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Location = new System.Drawing.Point(179, 157);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 23);
-            this.btnEditar.TabIndex = 7;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCancelar.ImageKey = "(nenhum)";
+            this.btnCancelar.Location = new System.Drawing.Point(260, 157);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 9;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // btnSalvar
             // 
@@ -287,16 +230,73 @@
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.button3_Click);
             // 
-            // btnCancelar
+            // btnEditar
             // 
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.ImageKey = "(nenhum)";
-            this.btnCancelar.Location = new System.Drawing.Point(260, 157);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 9;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnEditar.Location = new System.Drawing.Point(179, 157);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 7;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Location = new System.Drawing.Point(17, 157);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(75, 23);
+            this.btnNovo.TabIndex = 6;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            // 
+            // txtNome
+            // 
+            this.txtNome.Location = new System.Drawing.Point(61, 60);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(193, 23);
+            this.txtNome.TabIndex = 5;
+            // 
+            // txtDescricao
+            // 
+            this.txtDescricao.Location = new System.Drawing.Point(61, 89);
+            this.txtDescricao.Multiline = true;
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtDescricao.Size = new System.Drawing.Size(274, 33);
+            this.txtDescricao.TabIndex = 4;
+            // 
+            // txtIdCategoria
+            // 
+            this.txtIdCategoria.Location = new System.Drawing.Point(61, 31);
+            this.txtIdCategoria.Name = "txtIdCategoria";
+            this.txtIdCategoria.Size = new System.Drawing.Size(193, 23);
+            this.txtIdCategoria.TabIndex = 3;
+            // 
+            // lblDescricao
+            // 
+            this.lblDescricao.AutoSize = true;
+            this.lblDescricao.Location = new System.Drawing.Point(2, 94);
+            this.lblDescricao.Name = "lblDescricao";
+            this.lblDescricao.Size = new System.Drawing.Size(58, 15);
+            this.lblDescricao.TabIndex = 2;
+            this.lblDescricao.Text = "Descrição";
+            // 
+            // lblNome
+            // 
+            this.lblNome.AutoSize = true;
+            this.lblNome.Location = new System.Drawing.Point(12, 65);
+            this.lblNome.Name = "lblNome";
+            this.lblNome.Size = new System.Drawing.Size(40, 15);
+            this.lblNome.TabIndex = 1;
+            this.lblNome.Text = "Nome";
+            // 
+            // lblIdcategoria
+            // 
+            this.lblIdcategoria.AutoSize = true;
+            this.lblIdcategoria.Location = new System.Drawing.Point(7, 36);
+            this.lblIdcategoria.Name = "lblIdcategoria";
+            this.lblIdcategoria.Size = new System.Drawing.Size(46, 15);
+            this.lblIdcategoria.TabIndex = 0;
+            this.lblIdcategoria.Text = "Código";
             // 
             // errorIcone
             // 
@@ -315,6 +315,7 @@
             this.Name = "frmCategoporia";
             this.Text = "Categoria";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.Load += new System.EventHandler(this.frmCategoporia_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -337,7 +338,7 @@
         private CheckBox chkDeletar;
         private Label lblTotal;
         private Button btnImprimir;
-        private Button bntDeletar;
+        private Button btnDeletar;
         private Button btnBuscar;
         private TextBox txtBuscar;
         private Label lblNomeBuscar;
