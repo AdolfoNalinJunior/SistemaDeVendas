@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace CamadaApresentacao
 {
-    public partial class frmCategoporia : Form
+    public partial class frmCategoria : Form
     {
         private bool eNovo = false;
         private bool eEditar = false;
 
-        public frmCategoporia()
+        public frmCategoria()
         {
             InitializeComponent();
             this.ttMensagem.SetToolTip(this.txtNome, "Insira o nome da categoria");
@@ -82,7 +82,7 @@ namespace CamadaApresentacao
         private void OcultarColubas()
         {
             this.dataListar.Columns[0].Visible = false;
-            this.dataListar.Columns[1].Visible = false;
+            // this.dataListar.Columns[1].Visible = false;
         }
 
         // MOstrar no DataGrid
@@ -94,7 +94,7 @@ namespace CamadaApresentacao
         }
 
         // Buscar Pelo nome
-        private void BuscarNome(string nome)
+        private void BuscarNome()
         {
             this.dataListar.DataSource = NCategoria.Buscar(this.txtBuscar.Text); 
             this.OcultarColubas();
@@ -121,6 +121,11 @@ namespace CamadaApresentacao
             this.Botoes();
 
 
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            this.BuscarNome();
         }
     }
 }

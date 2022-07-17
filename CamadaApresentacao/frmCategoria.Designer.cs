@@ -1,6 +1,6 @@
 ﻿namespace CamadaApresentacao
 {
-    partial class frmCategoporia
+    partial class frmCategoria
     {
         /// <summary>
         /// Required designer variable.
@@ -161,6 +161,7 @@
             this.btnBuscar.TabIndex = 6;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscar
             // 
