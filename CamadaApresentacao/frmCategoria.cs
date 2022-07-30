@@ -106,9 +106,32 @@ namespace CamadaApresentacao
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnSalvar_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                string resp = "";
+                if (this.txtNome.Text == string.Empty)
+                {
+                    MensagemErro("Preencha todos os campos!! ");
+                    errorIcone.SetError(txtNome, "Insira o nome! ");
+                }
+                else
+                {
+                    if (this.eNovo)
+                    {
+                        resp = NCategoria.Inserir(txtNome.Text.Trim(), txtDescricao.Text.Trim();
+                    }
+                    else
+                    {
+                        resp = NCategoria.Editar(Convert.ToInt32(txtIdCategoria.Text),txtNome.Text.Trim(), txtDescricao.Text.Trim());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         // Mostrar tabControl Configurações de Itens
@@ -119,13 +142,23 @@ namespace CamadaApresentacao
             this.Mostrar();
             this.Habilitar(false);
             this.Botoes();
-
-
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             this.BuscarNome();
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            this.eNovo = true;
+            this.eEditar = false;
+            this.Botoes();
+            this.limpar();
+            this.Habilitar(true);
+            this.txtNome.Focus();
+            // O método Focus é para chamar o cursor do mouse
+            this.txtIdCategoria.Enabled = false;
         }
     }
 }
