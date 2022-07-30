@@ -136,7 +136,7 @@ namespace CamadaDado
                 parNome.ParameterName = "@nome";
                 parNome.SqlDbType = SqlDbType.VarChar;
                 parNome.Size = 50; 
-                parNome.Value = this.Nome;
+                parNome.Value = this.Nome;  
                 SqlCmd.Parameters.Add(parNome);
 
                 SqlParameter parDescricao = new SqlParameter();
@@ -225,41 +225,46 @@ namespace CamadaDado
                 SqlDataAdapter sqlDat = new SqlDataAdapter(SqlCmd);
                 sqlDat.Fill(dtResultado);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                dtResultado = null;
-                throw;
+                return dtResultado = null;
             }
             return dtResultado;
         }
 
-        // Método Buscar
-        public DataTable Buscar(DCategoria categoria)
+        // Método BuscarNome
+        public DataTable BuscarNome(DCategoria Categoria)
         {
             DataTable dtResultado = new DataTable();
             SqlConnection SqlCon = new SqlConnection();
+
             try
             {
                 SqlCon.ConnectionString = Conexao.Cn;
                 SqlCommand SqlCmd = new SqlCommand();
-                SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "spbucar_nome";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
-                SqlDataAdapter sqlDat = new SqlDataAdapter(SqlCmd);
-                sqlDat.Fill(dtResultado);
-
+            
                 SqlParameter parTextoBuscar = new SqlParameter();
                 parTextoBuscar.ParameterName = "@textoBuscar";
                 parTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 parTextoBuscar.Size = 50;
-                parTextoBuscar.Value = categoria.TextoBuscar;
-                SqlCmd.Parameters.Add(parTextoBuscar);
+                parTextoBuscar.Value = Categoria.TextoBuscar;
+
+                SqlCmd.Parameters.Add(parTextoBuscar); 
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spbuscar_nome";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+                
+                SqlDataAdapter sqlDat = new SqlDataAdapter(SqlCmd);
+                sqlDat.Fill(dtResultado);
+
+              // É muito importante se atentar as ondem que vai ser realizado o código
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                dtResultado = null;
+                return dtResultado;
                 throw;
             }
+
             return dtResultado;
         }
     }

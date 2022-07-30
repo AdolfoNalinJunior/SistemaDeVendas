@@ -37,16 +37,18 @@ namespace CamadaNegocio
             return Obj.Excluir(Obj);
         }
 
+        // Função Mostrar
         public static DataTable Mostrar()
         {
             return new DCategoria().Mostrar();
         }
 
-        public static DataTable Buscar(string textoBuscar)
+        // Fumção Mostrar
+        public static DataTable BuscarNome(string textoBuscar)
         {
             DCategoria Obj = new DCategoria();
             Obj.TextoBuscar = textoBuscar;
-            return Obj.Buscar(Obj);
+            return Obj.BuscarNome(Obj);
         }
     }
 }

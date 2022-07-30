@@ -96,11 +96,11 @@ namespace CamadaApresentacao
         // Buscar Pelo nome
         private void BuscarNome()
         {
-            this.dataListar.DataSource = NCategoria.Buscar(this.txtBuscar.Text); 
+            this.dataListar.DataSource = NCategoria.BuscarNome(this.txtBuscar.Text); 
             this.OcultarColubas();
             this.lblTotal.Text = "Total de Registros: " + Convert.ToString(dataListar.Rows.Count);
         }
-
+        
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
