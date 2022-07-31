@@ -120,17 +120,39 @@ namespace CamadaApresentacao
                 {
                     if (this.eNovo)
                     {
-                        resp = NCategoria.Inserir(txtNome.Text.Trim(), txtDescricao.Text.Trim();
+                        resp = NCategoria.Inserir(txtNome.Text.Trim(), txtDescricao.Text.Trim());
                     }
                     else
                     {
                         resp = NCategoria.Editar(Convert.ToInt32(txtIdCategoria.Text),txtNome.Text.Trim(), txtDescricao.Text.Trim());
                     }
                 }
+
+                if (resp.Equals("OK"))
+                {
+                    if (this.eNovo)
+                    {
+                        this.MensagemOk("Registro salvo com sucesso!! ");
+                    }
+                    else
+                    {
+                        this.MensagemOk("Registro editado com sucesso!! ");
+                    }
+                }
+                else
+                {
+                    this.MensagemOk(resp);
+                }
+
+                this.eNovo = false;
+                this.eEditar = false;
+                this.Botoes();
+                this.limpar();
+                this.Mostrar();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message + ex.StackTrace);    
             }
         }
 
@@ -142,7 +164,7 @@ namespace CamadaApresentacao
             this.Mostrar();
             this.Habilitar(false);
             this.Botoes();
-        }
+      
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -157,8 +179,28 @@ namespace CamadaApresentacao
             this.limpar();
             this.Habilitar(true);
             this.txtNome.Focus();
-            // O método Focus é para chamar o cursor do mouse
+            // O método Focus é para chamar o cursor do mouse 
             this.txtIdCategoria.Enabled = false;
+        }
+
+        private void dataListar_DoubleClick(object sender, EventArgs e)
+        {
+            this.txtIdCategoria.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["idCategoria"].Value);
+            this.txtNome.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["nome"].Value);
+            this.txtDescricao.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["descricao"].Value);
+            this.tabControl1.SelectedIndex = 1;
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (this.txtIdCategoria.Text.Equals(""))
+            {
+                this.MensagemErro("Selecione um registro para inserir!! ");
+            }
+                else
+                {
+
+                }
         }
     }
 }

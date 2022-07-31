@@ -106,6 +106,7 @@
             this.dataListar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataListar.Size = new System.Drawing.Size(693, 211);
             this.dataListar.TabIndex = 11;
+            this.dataListar.DoubleClick += new System.EventHandler(this.dataListar_DoubleClick);
             // 
             // Deletar
             // 
@@ -129,7 +130,7 @@
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTotal.Location = new System.Drawing.Point(655, 335);
+            this.lblTotal.Location = new System.Drawing.Point(523, 335);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(45, 21);
             this.lblTotal.TabIndex = 9;
@@ -239,6 +240,7 @@
             this.btnEditar.TabIndex = 7;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnNovo
             // 
