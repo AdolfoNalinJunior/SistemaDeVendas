@@ -42,7 +42,7 @@ namespace CamadaApresentacao
         }
 
         // Limpar
-        private void limpar()
+        private void Limpar()
         {
             this.txtNome.Text = string.Empty;
             this.txtIdCategoria.Text = string.Empty;
@@ -96,11 +96,11 @@ namespace CamadaApresentacao
         // Buscar Pelo nome
         private void BuscarNome()
         {
-            this.dataListar.DataSource = NCategoria.BuscarNome(this.txtBuscar.Text); 
+            this.dataListar.DataSource = NCategoria.BuscarNome(this.txtBuscar.Text);
             this.OcultarColubas();
             this.lblTotal.Text = "Total de Registros: " + Convert.ToString(dataListar.Rows.Count);
         }
-        
+
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -124,7 +124,7 @@ namespace CamadaApresentacao
                     }
                     else
                     {
-                        resp = NCategoria.Editar(Convert.ToInt32(txtIdCategoria.Text),txtNome.Text.Trim(), txtDescricao.Text.Trim());
+                        resp = NCategoria.Editar(Convert.ToInt32(txtIdCategoria.Text), txtNome.Text.Trim(), txtDescricao.Text.Trim());
                     }
                 }
 
@@ -147,12 +147,12 @@ namespace CamadaApresentacao
                 this.eNovo = false;
                 this.eEditar = false;
                 this.Botoes();
-                this.limpar();
+                this.Limpar();
                 this.Mostrar();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + ex.StackTrace);    
+                MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
 
@@ -164,7 +164,7 @@ namespace CamadaApresentacao
             this.Mostrar();
             this.Habilitar(false);
             this.Botoes();
-      
+        }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -176,7 +176,7 @@ namespace CamadaApresentacao
             this.eNovo = true;
             this.eEditar = false;
             this.Botoes();
-            this.limpar();
+            this.Limpar();
             this.Habilitar(true);
             this.txtNome.Focus();
             // O método Focus é para chamar o cursor do mouse 
@@ -190,17 +190,86 @@ namespace CamadaApresentacao
             this.txtDescricao.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["descricao"].Value);
             this.tabControl1.SelectedIndex = 1;
         }
-
+      
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (this.txtIdCategoria.Text.Equals(""))
             {
-                this.MensagemErro("Selecione um registro para inserir!! ");
+                this.MensagemErro("Selecione um registro para inserir.");
             }
-                else
-                {
+            else
+            {
+                this.eEditar = true;
+                this.Botoes();
+                this.Habilitar(true);
+            }
+        }
 
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.eEditar = false;
+            this.eNovo = false;
+            this.Botoes();
+            this.Habilitar(false);
+            this.Limpar();
+        }
+
+        private void chkDeletar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkDeletar.Checked)
+            {
+                this.dataListar.Columns[0].Visible = true;
+            }
+            else
+            {
+                this.dataListar.Columns[0].Visible = false;
+            }
+        }
+
+        private void dataListar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataListar.Columns["Deletar"].Index)
+            {
+                // Validação check box Deletar
+                DataGridViewCheckBoxCell ChkDeletar = (DataGridViewCheckBoxCell) dataListar.Rows[e.RowIndex].Cells["Deletar"];
+                ChkDeletar.Value = !Convert.ToBoolean(ChkDeletar.Value);
+            }
+        }
+
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult Opcao;
+                Opcao = MessageBox.Show("Realmente deseja apagar os Registros?", "Sistema Comercio", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (Opcao == DialogResult.OK)
+                {
+                    string codigo;
+                    string resp;
+
+                    foreach (DataGridViewRow row in dataListar.Rows)
+                    {
+                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        {
+                            codigo = Convert.ToString(row.Cells[1].Value);
+                            resp = NCategoria.Deletar(Convert.ToInt32(codigo)); 
+                            if (resp.Equals("OK"))
+                            {
+                                this.MensagemOk("Registros excluido com sucesso.");
+                            }
+                            else
+                            {
+                                this.MensagemErro(resp);
+                            }
+                        }
+                    }
+                    this.Mostrar();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
         }
     }
 }

@@ -106,6 +106,7 @@
             this.dataListar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataListar.Size = new System.Drawing.Size(693, 211);
             this.dataListar.TabIndex = 11;
+            this.dataListar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListar_CellContentClick);
             this.dataListar.DoubleClick += new System.EventHandler(this.dataListar_DoubleClick);
             // 
             // Deletar
@@ -125,6 +126,7 @@
             this.chkDeletar.TabIndex = 10;
             this.chkDeletar.Text = "Deletar";
             this.chkDeletar.UseVisualStyleBackColor = true;
+            this.chkDeletar.CheckedChanged += new System.EventHandler(this.chkDeletar_CheckedChanged);
             // 
             // lblTotal
             // 
@@ -153,6 +155,7 @@
             this.btnDeletar.TabIndex = 7;
             this.btnDeletar.Text = "Deletar ";
             this.btnDeletar.UseVisualStyleBackColor = true;
+            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
             // 
             // btnBuscar
             // 
@@ -221,6 +224,7 @@
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 

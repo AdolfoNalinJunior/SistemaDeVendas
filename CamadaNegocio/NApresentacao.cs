@@ -8,32 +8,32 @@ using CamadaDado;
 
 namespace CamadaNegocio
 {
-    public class NCategoria
+    public class NApresentacao
     {
         // Função inserir
         public static string Inserir(string nome, string descricao)
         {
-            DCategoria Obj = new DCategoria();
+            DApresentacao Obj = new DApresentacao();
             Obj.Nome = nome;
             Obj.Descricao = descricao;
             return Obj.Inserir(Obj);
         }
 
         // Função Editar
-        public static string Editar(int idCategoria, string nome, string descricao)
+        public static string Editar(int idApresentacao, string nome, string descricao)
         {
-            DCategoria Obj = new DCategoria();
+            DApresentacao Obj = new DApresentacao();
             Obj.Nome = nome;
             Obj.Descricao = descricao;
-            Obj.IdCategoria = idCategoria;
+            Obj.IdApresentacao = idApresentacao;
             return Obj.Editar(Obj);
         }
 
         // Função Deletar
-        public static string Deletar(int idCategoria)
+        public static string Deletar(int idApresentacao)
         {
-            DCategoria Obj = new DCategoria();
-            Obj.IdCategoria = idCategoria;
+            DApresentacao Obj = new DApresentacao();
+            Obj.IdApresentacao = idApresentacao;
             return Obj.Excluir(Obj);
         }
 
@@ -46,7 +46,7 @@ namespace CamadaNegocio
         // Fumção Mostrar
         public static DataTable BuscarNome(string textoBuscar)
         {
-            DCategoria Obj = new DCategoria();
+            DApresentacao Obj = new DApresentacao();
             Obj.TextoBuscar = textoBuscar;
             return Obj.BuscarNome(Obj);
         }
