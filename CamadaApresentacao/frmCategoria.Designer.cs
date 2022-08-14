@@ -51,7 +51,7 @@
             this.txtIdCategoria = new System.Windows.Forms.TextBox();
             this.lblDescricao = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
-            this.lblIdcategoria = new System.Windows.Forms.Label();
+            this.lblIdApresentacao = new System.Windows.Forms.Label();
             this.errorIcone = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttMensagem = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
@@ -205,7 +205,7 @@
             this.groupBox1.Controls.Add(this.txtIdCategoria);
             this.groupBox1.Controls.Add(this.lblDescricao);
             this.groupBox1.Controls.Add(this.lblNome);
-            this.groupBox1.Controls.Add(this.lblIdcategoria);
+            this.groupBox1.Controls.Add(this.lblIdApresentacao);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(765, 395);
@@ -297,14 +297,14 @@
             this.lblNome.TabIndex = 1;
             this.lblNome.Text = "Nome";
             // 
-            // lblIdcategoria
+            // lblIdApresentacao
             // 
-            this.lblIdcategoria.AutoSize = true;
-            this.lblIdcategoria.Location = new System.Drawing.Point(7, 36);
-            this.lblIdcategoria.Name = "lblIdcategoria";
-            this.lblIdcategoria.Size = new System.Drawing.Size(46, 15);
-            this.lblIdcategoria.TabIndex = 0;
-            this.lblIdcategoria.Text = "Código";
+            this.lblIdApresentacao.AutoSize = true;
+            this.lblIdApresentacao.Location = new System.Drawing.Point(7, 36);
+            this.lblIdApresentacao.Name = "lblIdApresentacao";
+            this.lblIdApresentacao.Size = new System.Drawing.Size(46, 15);
+            this.lblIdApresentacao.TabIndex = 0;
+            this.lblIdApresentacao.Text = "Código";
             // 
             // errorIcone
             // 
@@ -359,7 +359,7 @@
         private TextBox txtIdCategoria;
         private Label lblDescricao;
         private Label lblNome;
-        private Label lblIdcategoria;
+        private Label lblIdApresentacao;
         private Button btnCancelar;
         private ErrorProvider errorIcone;
         private ToolTip ttMensagem;

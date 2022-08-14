@@ -23,7 +23,7 @@ namespace CamadaDado
 
         public DApresentacao(int idApresentacao, string nome, string descricao, string textoBuscar)
         {
-            this.idApresetacao = idApresentacao;
+            this.IdApresentacao = idApresentacao;
             this.Nome = nome;
             this.Descricao = descricao;
             this.TextoBuscar = textoBuscar;
