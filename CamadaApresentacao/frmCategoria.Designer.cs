@@ -218,7 +218,7 @@
             // 
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCancelar.ImageKey = "(nenhum)";
-            this.btnCancelar.Location = new System.Drawing.Point(260, 157);
+            this.btnCancelar.Location = new System.Drawing.Point(260, 163);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 9;
@@ -228,7 +228,7 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(98, 157);
+            this.btnSalvar.Location = new System.Drawing.Point(98, 163);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 8;
@@ -238,7 +238,7 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(179, 157);
+            this.btnEditar.Location = new System.Drawing.Point(179, 163);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 23);
             this.btnEditar.TabIndex = 7;
@@ -248,7 +248,7 @@
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(17, 157);
+            this.btnNovo.Location = new System.Drawing.Point(17, 163);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 23);
             this.btnNovo.TabIndex = 6;
@@ -269,7 +269,7 @@
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDescricao.Size = new System.Drawing.Size(274, 33);
+            this.txtDescricao.Size = new System.Drawing.Size(274, 62);
             this.txtDescricao.TabIndex = 4;
             // 
             // txtIdCategoria

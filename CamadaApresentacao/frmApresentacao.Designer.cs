@@ -70,16 +70,17 @@
             // 
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCancelar.ImageKey = "(nenhum)";
-            this.btnCancelar.Location = new System.Drawing.Point(260, 157);
+            this.btnCancelar.Location = new System.Drawing.Point(260, 168);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(98, 157);
+            this.btnSalvar.Location = new System.Drawing.Point(98, 168);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 8;
@@ -89,7 +90,7 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(179, 157);
+            this.btnEditar.Location = new System.Drawing.Point(179, 168);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 23);
             this.btnEditar.TabIndex = 7;
@@ -99,7 +100,7 @@
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(17, 157);
+            this.btnNovo.Location = new System.Drawing.Point(17, 168);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 23);
             this.btnNovo.TabIndex = 6;
@@ -120,7 +121,7 @@
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDescricao.Size = new System.Drawing.Size(274, 33);
+            this.txtDescricao.Size = new System.Drawing.Size(274, 62);
             this.txtDescricao.TabIndex = 4;
             this.txtDescricao.TextChanged += new System.EventHandler(this.txtDescricao_TextChanged);
             // 
@@ -219,6 +220,7 @@
             this.btnDeletar.TabIndex = 7;
             this.btnDeletar.Text = "Deletar ";
             this.btnDeletar.UseVisualStyleBackColor = true;
+            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
             // 
             // btnBuscar
             // 
@@ -271,6 +273,7 @@
             this.dataListar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataListar.Size = new System.Drawing.Size(693, 211);
             this.dataListar.TabIndex = 11;
+            this.dataListar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListar_CellContentClick);
             this.dataListar.DoubleClick += new System.EventHandler(this.dataListar_DoubleClick);
             // 
             // tabPage1
@@ -319,7 +322,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmApresentacao";
-            this.Text = "frmApresentacao";
+            this.Text = "Apresentacao";
             this.Load += new System.EventHandler(this.frmApresentacao_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorIcone)).EndInit();
             this.groupBox1.ResumeLayout(false);

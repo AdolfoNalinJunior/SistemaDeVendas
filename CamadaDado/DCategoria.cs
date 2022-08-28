@@ -57,11 +57,11 @@ namespace CamadaDado
                  * Quando o objeto já existente você vai passar ele entre " "
                  * como que se fosse uma string. Isso se chama procedures
                  * 
-                 * O principal destes motivos é que, uma procedure éum código 
+                 * O principal motivo é que, uma procedure é um código 
                  * independente que fica pré-compilado no servidor de banco de dados, 
                  * assim,retiramos a onerosidade de processamento da aplicação e a 
-                 * passamos para o servidor sendo que, aaplicação, apenas recebe o 
-                 * resultado do processamento destas procedures e continua seu fluxo ...
+                 * passamos para o servidor sendo que, a aplicação, apenas recebe o 
+                 * resultado do processamento dessa procedures e continua seu fluxo ...
                  */
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 

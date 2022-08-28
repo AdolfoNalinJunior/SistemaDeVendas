@@ -39,7 +39,7 @@ namespace CamadaDado
                 SqlCon.ConnectionString = Conexao.Cn;
                 SqlCon.Open();
 
-                SqlCommand SqlCmd = new SqlCommand();
+                SqlCommand SqlCmd = new SqlCommand(); // objeto Comando Sql 
                 SqlCmd.Connection = SqlCon;
                 SqlCmd.CommandText = "spinserir_apresentacao";
                 
@@ -144,7 +144,7 @@ namespace CamadaDado
             return resp;
         }
 
-
+        // Método de Excluir
         public string Excluir(DApresentacao apresentacao)
         {
             SqlConnection SqlCon = new SqlConnection();
@@ -160,11 +160,11 @@ namespace CamadaDado
 
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
-                SqlParameter parIdCategoria = new SqlParameter();
-                parIdCategoria.ParameterName = "idapresentacao";
-                parIdCategoria.SqlDbType = SqlDbType.Int;
-                parIdCategoria.Value = apresentacao.IdApresentacao;
-                SqlCmd.Parameters.Add(parIdCategoria);
+                SqlParameter parIdApresentacao = new SqlParameter();
+                parIdApresentacao.ParameterName = "idapresentacao";
+                parIdApresentacao.SqlDbType = SqlDbType.Int;
+                parIdApresentacao.Value = apresentacao.IdApresentacao;
+                SqlCmd.Parameters.Add(parIdApresentacao);
 
                 resp = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "A exclusão não foi feita ";
                 return resp;
@@ -228,7 +228,7 @@ namespace CamadaDado
 
                 SqlCmd.Parameters.Add(parTextoBuscar);
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "spbuscar_nome";
+                SqlCmd.CommandText = "spbuscar_apresentacao_nome";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 SqlDataAdapter sqlDat = new SqlDataAdapter(SqlCmd);

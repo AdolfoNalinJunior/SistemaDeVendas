@@ -99,6 +99,7 @@ namespace CamadaApresentacao
 
         }
 
+        // Arquivo design
         private void frmApresentacao_Load(object sender, EventArgs e)
         {
             this.Top = 0;
@@ -108,16 +109,19 @@ namespace CamadaApresentacao
             this.Botoes();
         }
 
+        // Botão Buscar
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             BuscarNome();
         }
 
+        // textBox de Buscartexto 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             this.BuscarNome();
         }
 
+        // botão novo
         private void btnNovo_Click(object sender, EventArgs e)
         {
             this.eNovo = true;
@@ -129,6 +133,7 @@ namespace CamadaApresentacao
             this.txtIdApresentacao.Enabled = false;
         }
 
+        // Botão Salvar
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             try
@@ -143,11 +148,11 @@ namespace CamadaApresentacao
                 {
                     if (this.eNovo)
                     {
-                        resp = NCategoria.Inserir(txtNome.Text.Trim(), txtDescricao.Text.Trim());
+                        resp = NApresentacao.Inserir(txtNome.Text.Trim(), txtDescricao.Text.Trim());
                     }
                     else
                     {
-                        resp = NCategoria.Editar(Convert.ToInt32(txtIdApresentacao.Text), txtNome.Text.Trim(), txtDescricao.Text.Trim());
+                        resp = NApresentacao.Editar(Convert.ToInt32(txtIdApresentacao.Text), txtNome.Text.Trim(), txtDescricao.Text.Trim());
                     }
                 }
 
@@ -179,14 +184,16 @@ namespace CamadaApresentacao
             }
         }
 
+        // Dois clicks no dataListar 
         private void dataListar_DoubleClick(object sender, EventArgs e)
         {
-            this.txtIdApresentacao.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["idApresentacao"].Value);
+            this.txtIdApresentacao.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["idapresentacao"].Value);
             this.txtNome.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["nome"].Value);
             this.txtDescricao.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["descricao"].Value);
             this.tabControl1.SelectedIndex = 1;
         }
 
+        // Botão Editar
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (this.txtIdApresentacao.Text.Equals(""))
@@ -201,6 +208,7 @@ namespace CamadaApresentacao
             }
         }
 
+        // Checkbox Deletar
         private void chkDeletar_CheckedChanged(object sender, EventArgs e)
         {
             if (chkDeletar.Checked)
@@ -211,6 +219,63 @@ namespace CamadaApresentacao
             {
                 this.dataListar.Columns[0].Visible = false;
             }
+        }
+
+        // Validação do checkBox para ativar a valitação do deletar 
+        private void dataListar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataListar.Columns["Deletar"].Index)
+            {
+                // Validação check box Deletar
+                DataGridViewCheckBoxCell ChkDeletar = (DataGridViewCheckBoxCell)dataListar.Rows[e.RowIndex].Cells["Deletar"];
+                ChkDeletar.Value = !Convert.ToBoolean(ChkDeletar.Value);
+            }
+         }
+
+        // Botão Deletar
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult Opcao;
+                Opcao = MessageBox.Show("Realmente deseja apagar os Registros?", "Sistema Comercio", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (Opcao == DialogResult.OK)
+                {
+                    string codigo;
+                    string resp;
+
+                    foreach (DataGridViewRow row in dataListar.Rows)
+                    {
+                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        {
+                            codigo = Convert.ToString(row.Cells[1].Value);
+                            resp = NApresentacao.Deletar(Convert.ToInt32(codigo));
+                            if (resp.Equals("OK"))
+                            {
+                                this.MensagemOk("Registros excluido com sucesso.");
+                            }
+                            else
+                            {
+                                this.MensagemErro(resp);
+                            }
+                        }
+                    }
+                    this.Mostrar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.eEditar = false;
+            this.eNovo = false;
+            this.Botoes();
+            this.Habilitar(false);
+            this.Limpar();
         }
     }
 }
