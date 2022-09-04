@@ -213,7 +213,7 @@ namespace CamadaDado
         // Método mostrar
         public DataTable Mostrar()
         {
-            DataTable dtResultado = new DataTable();
+            DataTable dtResultado = new DataTable("categoria");
             SqlConnection SqlCon = new SqlConnection();
             try
             {
@@ -235,7 +235,7 @@ namespace CamadaDado
         // Método BuscarNome
         public DataTable BuscarNome(DCategoria Categoria)
         {
-            DataTable dtResultado = new DataTable();
+            DataTable dtResultado = new DataTable("Categoria");
             SqlConnection SqlCon = new SqlConnection();
 
             try

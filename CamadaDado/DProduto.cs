@@ -6,31 +6,39 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 
-
 namespace CamadaDado
 {
-    public class DApresentacao
+    public class DProduto
     {
-        public int IdApresentacao { get; set; }
+        public int Id { get; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
+        public byte[] Imagem { get; set; }
+        public string Codigo { get; set; }
+        public int IdCategoria { get; set; }
+        public int IdApresentacao { get; set; }
         public string TextoBuscar { get; set; }
 
-        public DApresentacao()
+        public DProduto()
         {
 
         }
 
-        public DApresentacao(int idApresentacao, string nome, string descricao, string textoBuscar)
+        public DProduto(int id, string nome, string descricao, byte[] imagem, string codigo, int idCodigo, int idAprencia, string textoBuscar)
         {
-            this.IdApresentacao = idApresentacao;
+            this.Id = id;
             this.Nome = nome;
             this.Descricao = descricao;
+            this.Imagem = imagem;
+            this.Codigo = codigo;
+            this.IdApresentacao = idAprencia;
+            this.IdCategoria = idCodigo;
             this.TextoBuscar = textoBuscar;
         }
 
+
         // Método Inserir
-        public string Inserir(DApresentacao apresentacao)
+        public string Inserir(DProduto produto)
         {
             SqlConnection SqlCon = new SqlConnection();
             string resp = "";
@@ -41,29 +49,54 @@ namespace CamadaDado
 
                 SqlCommand SqlCmd = new SqlCommand(); // objeto Comando Sql 
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "spinserir_apresentacao";
-                
+                SqlCmd.CommandText = "spinserir_produto";
+
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
-                SqlParameter parIdApresentacao = new SqlParameter();
-                parIdApresentacao.ParameterName = "idapresentacao"; 
-                parIdApresentacao.SqlDbType = SqlDbType.Int; 
-                parIdApresentacao.Direction = ParameterDirection.Output;
-                SqlCmd.Parameters.Add(parIdApresentacao); 
+                SqlParameter parId = new SqlParameter();
+                parId.ParameterName = "id";
+                parId.SqlDbType = SqlDbType.Int;
+                parId.Direction = ParameterDirection.Output;
+                SqlCmd.Parameters.Add(parId);
+
+                SqlParameter parCodigo = new SqlParameter();
+                parCodigo.ParameterName = "codigo";
+                parCodigo.SqlDbType = SqlDbType.VarChar;
+                parCodigo.Size = 50;
+                parCodigo.Value = produto.Nome;
+                SqlCmd.Parameters.Add(parCodigo);
 
                 SqlParameter parNome = new SqlParameter();
                 parNome.ParameterName = "@nome";
                 parNome.SqlDbType = SqlDbType.VarChar;
                 parNome.Size = 50; // Limite de Caracter
-                parNome.Value = this.Nome;
+                parNome.Value = produto.Nome;
                 SqlCmd.Parameters.Add(parNome);
 
                 SqlParameter parDescricao = new SqlParameter();
                 parDescricao.ParameterName = "@descricao";
                 parDescricao.SqlDbType = SqlDbType.VarChar;
                 parDescricao.Size = 150;
-                parDescricao.Value = this.Descricao;
+                parDescricao.Value = produto.Descricao;
                 SqlCmd.Parameters.Add(parDescricao);
+
+                SqlParameter parImagem = new SqlParameter();
+                parImagem.ParameterName = "@imagem";
+                parImagem.SqlDbType = SqlDbType.Image;
+                parImagem.Value = produto.Imagem;
+                SqlCmd.Parameters.Add(parImagem);
+
+                SqlParameter parIdCategoria = new SqlParameter();
+                parIdCategoria.ParameterName = "@idcategoria";
+                parIdCategoria.SqlDbType = SqlDbType.Int;
+                parIdCategoria.Value = produto.IdCategoria;
+                SqlCmd.Parameters.Add(parIdCategoria);
+
+                SqlParameter parIdArpesentacao = new SqlParameter();
+                parIdArpesentacao.ParameterName = "@idapresentacao";
+                parIdArpesentacao.SqlDbType = SqlDbType.Int;
+                parIdArpesentacao.Value = produto.IdCategoria;
+                SqlCmd.Parameters.Add(parIdArpesentacao);
 
                 // Verificação da inserção
                 resp = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "Registro não foi registrado";
@@ -87,8 +120,9 @@ namespace CamadaDado
             return resp;
         }
 
+
         // Método Editar
-        public string Editar(DApresentacao apresentacao)
+        public string Editar(DProduto produto)
         {
             SqlConnection SqlCon = new SqlConnection();
             string resp = "";
@@ -99,29 +133,54 @@ namespace CamadaDado
 
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "speditar_apresentacao";
+                SqlCmd.CommandText = "speditar_produto";
 
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
-                SqlParameter parIdApresentacao = new SqlParameter();
-                parIdApresentacao.ParameterName = "idapresentacao";
-                parIdApresentacao.SqlDbType = SqlDbType.Int;
-                parIdApresentacao.Value = apresentacao.IdApresentacao;
-                SqlCmd.Parameters.Add(parIdApresentacao);
+                SqlParameter parId = new SqlParameter();
+                parId.ParameterName = "id";
+                parId.SqlDbType = SqlDbType.Int;
+                parId.Direction = ParameterDirection.Output;
+                SqlCmd.Parameters.Add(parId);
+
+                SqlParameter parCodigo = new SqlParameter();
+                parCodigo.ParameterName = "codigo";
+                parCodigo.SqlDbType = SqlDbType.VarChar;
+                parCodigo.Size = 50;
+                parCodigo.Value = produto.Nome;
+                SqlCmd.Parameters.Add(parCodigo);
 
                 SqlParameter parNome = new SqlParameter();
                 parNome.ParameterName = "@nome";
                 parNome.SqlDbType = SqlDbType.VarChar;
-                parNome.Size = 50;
-                parNome.Value = this.Nome;
+                parNome.Size = 50; // Limite de Caracter
+                parNome.Value = produto.Nome;
                 SqlCmd.Parameters.Add(parNome);
 
                 SqlParameter parDescricao = new SqlParameter();
                 parDescricao.ParameterName = "@descricao";
                 parDescricao.SqlDbType = SqlDbType.VarChar;
                 parDescricao.Size = 150;
-                parDescricao.Value = this.Descricao;
+                parDescricao.Value = produto.Descricao;
                 SqlCmd.Parameters.Add(parDescricao);
+
+                SqlParameter parImagem = new SqlParameter();
+                parImagem.ParameterName = "@imagem";
+                parImagem.SqlDbType = SqlDbType.Image;
+                parImagem.Value = produto.Imagem;
+                SqlCmd.Parameters.Add(parImagem);
+
+                SqlParameter parIdCategoria = new SqlParameter();
+                parIdCategoria.ParameterName = "@idcategoria";
+                parIdCategoria.SqlDbType = SqlDbType.Int;
+                parIdCategoria.Value = produto.IdCategoria;
+                SqlCmd.Parameters.Add(parIdCategoria);
+
+                SqlParameter parIdArpesentacao = new SqlParameter();
+                parIdArpesentacao.ParameterName = "@idapresentacao";
+                parIdArpesentacao.SqlDbType = SqlDbType.Int;
+                parIdArpesentacao.Value = produto.IdCategoria;
+                SqlCmd.Parameters.Add(parIdArpesentacao);
 
                 resp = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "A edição não foi feita ";
                 return resp;
@@ -145,7 +204,7 @@ namespace CamadaDado
         }
 
         // Método de Excluir
-        public string Excluir(DApresentacao apresentacao)
+        public string Excluir(DProduto produto)
         {
             SqlConnection SqlCon = new SqlConnection();
             string resp = "";
@@ -156,15 +215,15 @@ namespace CamadaDado
 
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "spdeletar_apresentacao";
+                SqlCmd.CommandText = "spdeletar_produto";
 
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
-                SqlParameter parIdApresentacao = new SqlParameter();
-                parIdApresentacao.ParameterName = "idapresentacao";
-                parIdApresentacao.SqlDbType = SqlDbType.Int;
-                parIdApresentacao.Value = apresentacao.IdApresentacao;
-                SqlCmd.Parameters.Add(parIdApresentacao);
+                SqlParameter parId = new SqlParameter();
+                parId.ParameterName = "id";
+                parId.SqlDbType = SqlDbType.Int;
+                parId.Value = produto.Id;
+                SqlCmd.Parameters.Add(parId);
 
                 resp = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "A exclusão não foi feita ";
                 return resp;
@@ -190,14 +249,14 @@ namespace CamadaDado
         // Método mostrar
         public DataTable Mostrar()
         {
-            DataTable dtResultado = new DataTable("apresentacao");
+            DataTable dtResultado = new DataTable("produto");
             SqlConnection SqlCon = new SqlConnection();
             try
             {
                 SqlCon.ConnectionString = Conexao.Cn;
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "spmostrar_apresentacao";
+                SqlCmd.CommandText = "spmostrar_produto";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter sqlDat = new SqlDataAdapter(SqlCmd);
                 sqlDat.Fill(dtResultado);
@@ -210,9 +269,9 @@ namespace CamadaDado
         }
 
         // Método BuscarNome
-        public DataTable BuscarNome(DApresentacao apresentacao)
+        public DataTable BuscarNome(DProduto produto)
         {
-            DataTable dtResultado = new DataTable("apresentacao");
+            DataTable dtResultado = new DataTable("produto");
             SqlConnection SqlCon = new SqlConnection();
 
             try
@@ -222,13 +281,13 @@ namespace CamadaDado
 
                 SqlParameter parTextoBuscar = new SqlParameter();
                 parTextoBuscar.ParameterName = "@textoBuscar";
-                parTextoBuscar.SqlDbType = SqlDbType.VarChar;   
+                parTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 parTextoBuscar.Size = 50;
-                parTextoBuscar.Value = apresentacao.TextoBuscar;
+                parTextoBuscar.Value = produto.TextoBuscar;
 
                 SqlCmd.Parameters.Add(parTextoBuscar);
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "spbuscar_apresentacao_nome";
+                SqlCmd.CommandText = "spbuscar_produto_nome";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 SqlDataAdapter sqlDat = new SqlDataAdapter(SqlCmd);
