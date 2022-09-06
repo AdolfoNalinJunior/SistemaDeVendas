@@ -12,44 +12,51 @@ namespace CamadaNegocio
     public class NProduto
     {
         // Função inserir
-        public static string Inserir(string nome, string descricao, string codigo, byte[] iamagem)
+        public static string Inserir(string nome, string descricao, string codigo, byte[] imagem, int idCategoria, int idApresentacao)
         {
             DProduto Obj = new DProduto();
             Obj.Nome = nome;
             Obj.Descricao = descricao;
             Obj.Codigo = codigo;
-            Obj.Imagem = iamagem;
+            Obj.Imagem = imagem;
+            Obj.IdApresentacao = idApresentacao;
+            Obj.IdCategoria = idCategoria;
+
             return Obj.Inserir(Obj);
         }
 
         // Função Editar
-        public static string Editar(int idApresentacao, string nome, string descricao)
+        public static string Editar(int id,string nome, string descricao, string codigo,byte[] imagem, int idCategoria, int idApresentacao)
         {
-            DApresentacao Obj = new DApresentacao();
+            DProduto Obj = new DProduto();
+            Obj.Id = id;
             Obj.Nome = nome;
             Obj.Descricao = descricao;
+            Obj.Codigo = codigo;
+            Obj.Imagem = imagem;
             Obj.IdApresentacao = idApresentacao;
+            Obj.IdCategoria = idCategoria;
             return Obj.Editar(Obj);
         }
 
         // Função Deletar
-        public static string Deletar(int idApresentacao)
+        public static string Deletar(int id)
         {
-            DApresentacao Obj = new DApresentacao();
-            Obj.IdApresentacao = idApresentacao;
+            DProduto Obj = new DProduto();
+            Obj.Id= id;
             return Obj.Excluir(Obj);
         }
 
         // Função Mostrar
         public static DataTable Mostrar()
         {
-            return new DApresentacao().Mostrar();
+            return new DProduto().Mostrar();
         }
 
         // Fumção Mostrar
         public static DataTable BuscarNome(string textoBuscar)
         {
-            DApresentacao Obj = new DApresentacao();
+            DProduto Obj = new DProduto();
             Obj.TextoBuscar = textoBuscar;
             return Obj.BuscarNome(Obj);
         }
