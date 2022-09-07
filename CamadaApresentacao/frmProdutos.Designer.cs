@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProdutos));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataListar = new System.Windows.Forms.DataGridView();
@@ -47,7 +46,7 @@
             this.lblApresentação = new System.Windows.Forms.Label();
             this.btnBuscarCategoria = new System.Windows.Forms.Button();
             this.txtNomeCategoria = new System.Windows.Forms.TextBox();
-            this.textIdCategoria = new System.Windows.Forms.TextBox();
+            this.txtIdCategoria = new System.Windows.Forms.TextBox();
             this.categoria = new System.Windows.Forms.Label();
             this.btnCarregarImagem = new System.Windows.Forms.Button();
             this.btnLimparImagem = new System.Windows.Forms.Button();
@@ -208,7 +207,7 @@
             this.groupBox1.Controls.Add(this.lblApresentação);
             this.groupBox1.Controls.Add(this.btnBuscarCategoria);
             this.groupBox1.Controls.Add(this.txtNomeCategoria);
-            this.groupBox1.Controls.Add(this.textIdCategoria);
+            this.groupBox1.Controls.Add(this.txtIdCategoria);
             this.groupBox1.Controls.Add(this.categoria);
             this.groupBox1.Controls.Add(this.btnCarregarImagem);
             this.groupBox1.Controls.Add(this.btnLimparImagem);
@@ -250,7 +249,7 @@
             // 
             // btnBuscarCategoria
             // 
-            this.btnBuscarCategoria.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarCategoria.BackgroundImage")));
+            this.btnBuscarCategoria.BackgroundImage = global::CamadaApresentacao.Properties.Resources.BUSCA;
             this.btnBuscarCategoria.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnBuscarCategoria.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBuscarCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -267,12 +266,12 @@
             this.txtNomeCategoria.Size = new System.Drawing.Size(123, 23);
             this.txtNomeCategoria.TabIndex = 16;
             // 
-            // textIdCategoria
+            // txtIdCategoria
             // 
-            this.textIdCategoria.Location = new System.Drawing.Point(483, 30);
-            this.textIdCategoria.Name = "textIdCategoria";
-            this.textIdCategoria.Size = new System.Drawing.Size(23, 23);
-            this.textIdCategoria.TabIndex = 15;
+            this.txtIdCategoria.Location = new System.Drawing.Point(483, 30);
+            this.txtIdCategoria.Name = "txtIdCategoria";
+            this.txtIdCategoria.Size = new System.Drawing.Size(23, 23);
+            this.txtIdCategoria.TabIndex = 15;
             // 
             // categoria
             // 
@@ -286,7 +285,7 @@
             // btnCarregarImagem
             // 
             this.btnCarregarImagem.BackColor = System.Drawing.Color.YellowGreen;
-            this.btnCarregarImagem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCarregarImagem.BackgroundImage")));
+            this.btnCarregarImagem.BackgroundImage = global::CamadaApresentacao.Properties.Resources.INCLUIR_IMAGEM;
             this.btnCarregarImagem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnCarregarImagem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCarregarImagem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -299,7 +298,7 @@
             // btnLimparImagem
             // 
             this.btnLimparImagem.BackColor = System.Drawing.Color.Red;
-            this.btnLimparImagem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLimparImagem.BackgroundImage")));
+            this.btnLimparImagem.BackgroundImage = global::CamadaApresentacao.Properties.Resources.REMOVER_IMAGEM_;
             this.btnLimparImagem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnLimparImagem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimparImagem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -312,7 +311,7 @@
             // pxImagem
             // 
             this.pxImagem.BackColor = System.Drawing.Color.LightGray;
-            this.pxImagem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pxImagem.BackgroundImage")));
+            this.pxImagem.BackgroundImage = global::CamadaApresentacao.Properties.Resources.NÃO_HÁ_IMAGEM;
             this.pxImagem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pxImagem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pxImagem.Location = new System.Drawing.Point(419, 108);
@@ -446,6 +445,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "frmProdutos";
             this.Text = "Produtos";
+            this.Load += new System.EventHandler(this.frmProdutos_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -493,7 +493,7 @@
         private Button btnLimparImagem;
         private Button btnBuscarCategoria;
         private TextBox txtNomeCategoria;
-        private TextBox textIdCategoria;
+        private TextBox txtIdCategoria;
         private Label categoria;
         private ComboBox cbApresentacao;
         private Label lblApresentação;

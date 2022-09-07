@@ -59,5 +59,45 @@ namespace CamadaApresentacao.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BUSCA {
+            get {
+                object obj = ResourceManager.GetObject("BUSCA", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap INCLUIR_IMAGEM {
+            get {
+                object obj = ResourceManager.GetObject("INCLUIR IMAGEM", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NÃO_HÁ_IMAGEM {
+            get {
+                object obj = ResourceManager.GetObject("NÃO HÁ IMAGEM", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap REMOVER_IMAGEM_ {
+            get {
+                object obj = ResourceManager.GetObject("REMOVER IMAGEM ", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
