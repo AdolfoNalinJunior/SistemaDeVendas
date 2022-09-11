@@ -213,7 +213,7 @@ namespace CamadaDado
         // Método mostrar
         public DataTable Mostrar()
         {
-            DataTable dtResultado = new DataTable("categoria");
+            DataTable dtResultado = new DataTable();
             SqlConnection SqlCon = new SqlConnection();
             try
             {
@@ -227,7 +227,7 @@ namespace CamadaDado
             }
             catch (Exception ex)
             {
-                return dtResultado = null;
+                return dtResultado;
             }
             return dtResultado;
         }
@@ -261,8 +261,7 @@ namespace CamadaDado
             }
             catch (Exception ex)
             {
-                return dtResultado;
-                throw;
+                return dtResultado =null;
             }
 
             return dtResultado;

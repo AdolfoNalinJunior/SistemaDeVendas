@@ -190,7 +190,7 @@ namespace CamadaDado
         // Método mostrar
         public DataTable Mostrar()
         {
-            DataTable dtResultado = new DataTable("apresentacao");
+            DataTable dtResultado = new DataTable();
             SqlConnection SqlCon = new SqlConnection();
             try
             {
@@ -204,7 +204,7 @@ namespace CamadaDado
             }
             catch (Exception ex)
             {
-                return dtResultado = null;
+                return dtResultado;
             }
             return dtResultado;
         }
@@ -212,7 +212,7 @@ namespace CamadaDado
         // Método BuscarNome
         public DataTable BuscarNome(DApresentacao apresentacao)
         {
-            DataTable dtResultado = new DataTable("apresentacao");
+            DataTable dtResultado = new DataTable(nameof(apresentacao));
             SqlConnection SqlCon = new SqlConnection();
 
             try
@@ -233,13 +233,12 @@ namespace CamadaDado
 
                 SqlDataAdapter sqlDat = new SqlDataAdapter(SqlCmd);
                 sqlDat.Fill(dtResultado);
-
+                
                 // É muito importante se atentar as ondem que vai ser realizado o código
             }
             catch (Exception ex)
             {
-                return dtResultado;
-                throw;
+                return dtResultado = null;
             }
 
             return dtResultado;

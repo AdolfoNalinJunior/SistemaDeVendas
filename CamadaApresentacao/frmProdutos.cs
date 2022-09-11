@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +26,7 @@ namespace CamadaApresentacao
             this.ttMensagem.SetToolTip(this.cbApresentacao, "Selecione a apresentação do produto");
             this.txtIdCategoria.Enabled = false;
             this.txtNomeCategoria.Enabled = false;
+            this.ComboArpesentacao();
         }
 
         // Mostrar mensagem de Confirmação
@@ -48,7 +50,7 @@ namespace CamadaApresentacao
             this.txtCodigo.Text = string.Empty;
             this.txtIdCategoria.Text = string.Empty;
             this.txtNomeCategoria.Text = string.Empty;
-            this.cbApresentacao.Text = string.Empty;
+            //this.cbApresentacao.Text = string.Empty;
             this.pxImagem.Image = global::CamadaApresentacao.Properties.Resources.BUSCA;
         }
 
@@ -109,6 +111,16 @@ namespace CamadaApresentacao
             this.dataListar.DataSource = NProduto.BuscarNome(this.txtBuscar.Text);
             this.OcultarColubas();
             this.lblTotal.Text = "Total de Registros: " + Convert.ToString(dataListar.Rows.Count);
+        }
+
+        private void ComboArpesentacao()
+        {
+            cbApresentacao.DataSource = NApresentacao.Mostrar();
+            cbApresentacao.ValueMember = "IdApresentacao";
+            cbApresentacao.DisplayMember = "Nome";
+            /* Os objects que estão sendo chamados neste métodos fazem parte da CamadaDado
+             * que remete os valores que estão dentro da camada 
+             */
         }
 
         private void frmProdutos_Load(object sender, EventArgs e)
