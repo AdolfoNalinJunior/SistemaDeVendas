@@ -118,6 +118,8 @@
             this.dataListar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataListar.Size = new System.Drawing.Size(693, 211);
             this.dataListar.TabIndex = 11;
+            this.dataListar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListar_CellContentClick);
+            this.dataListar.DoubleClick += new System.EventHandler(this.dataListar_DoubleClick);
             // 
             // Deletar
             // 
@@ -136,6 +138,7 @@
             this.chkDeletar.TabIndex = 10;
             this.chkDeletar.Text = "Deletar";
             this.chkDeletar.UseVisualStyleBackColor = true;
+            this.chkDeletar.CheckedChanged += new System.EventHandler(this.chkDeletar_CheckedChanged);
             // 
             // lblTotal
             // 
@@ -173,6 +176,7 @@
             this.btnBuscar.TabIndex = 6;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscar
             // 
@@ -180,6 +184,7 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(189, 23);
             this.txtBuscar.TabIndex = 3;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // lblNomeBuscar
             // 
@@ -294,11 +299,12 @@
             this.btnCarregarImagem.Size = new System.Drawing.Size(68, 53);
             this.btnCarregarImagem.TabIndex = 13;
             this.btnCarregarImagem.UseVisualStyleBackColor = false;
+            this.btnCarregarImagem.Click += new System.EventHandler(this.btnCarregarImagem_Click);
             // 
             // btnLimparImagem
             // 
             this.btnLimparImagem.BackColor = System.Drawing.Color.Red;
-            this.btnLimparImagem.BackgroundImage = global::CamadaApresentacao.Properties.Resources.REMOVER_IMAGEM_;
+            this.btnLimparImagem.BackgroundImage = global::CamadaApresentacao.Properties.Resources.REMOVER_IMAGEM;
             this.btnLimparImagem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnLimparImagem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimparImagem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -347,6 +353,7 @@
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 
@@ -357,6 +364,7 @@
             this.btnSalvar.TabIndex = 8;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnEditar
             // 
@@ -367,6 +375,7 @@
             this.btnEditar.TabIndex = 7;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnNovo
             // 
@@ -377,6 +386,7 @@
             this.btnNovo.TabIndex = 6;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // txtNome
             // 

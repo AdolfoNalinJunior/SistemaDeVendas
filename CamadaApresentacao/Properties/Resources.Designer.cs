@@ -75,7 +75,7 @@ namespace CamadaApresentacao.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap INCLUIR_IMAGEM {
             get {
-                object obj = ResourceManager.GetObject("INCLUIR IMAGEM", resourceCulture);
+                object obj = ResourceManager.GetObject("INCLUIR_IMAGEM", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -85,7 +85,7 @@ namespace CamadaApresentacao.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap NÃO_HÁ_IMAGEM {
             get {
-                object obj = ResourceManager.GetObject("NÃO HÁ IMAGEM", resourceCulture);
+                object obj = ResourceManager.GetObject("NÃO_HÁ_IMAGEM", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace CamadaApresentacao.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap REMOVER_IMAGEM_ {
+        internal static System.Drawing.Bitmap REMOVER_IMAGEM {
             get {
-                object obj = ResourceManager.GetObject("REMOVER IMAGEM ", resourceCulture);
+                object obj = ResourceManager.GetObject("REMOVER_IMAGEM", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

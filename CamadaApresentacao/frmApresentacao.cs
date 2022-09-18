@@ -198,7 +198,7 @@ namespace CamadaApresentacao
         {
             if (this.txtIdApresentacao.Text.Equals(""))
             {
-                this.MensagemErro("Selecione um registro para inserir.");
+                this.MensagemErro("Selecione um registro para editar.");
             }
             else
             {
