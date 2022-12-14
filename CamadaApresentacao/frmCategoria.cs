@@ -185,7 +185,7 @@ namespace CamadaApresentacao
 
         private void dataListar_DoubleClick(object sender, EventArgs e)
         {
-            this.txtIdCategoria.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["idCategoria"].Value);
+            this.txtIdCategoria.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["idcategoria"].Value);
             this.txtNome.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["nome"].Value);
             this.txtDescricao.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["descricao"].Value);
             this.tabControl1.SelectedIndex = 1;

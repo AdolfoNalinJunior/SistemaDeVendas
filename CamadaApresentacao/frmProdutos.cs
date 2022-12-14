@@ -287,9 +287,12 @@ namespace CamadaApresentacao
 
         private void dataListar_DoubleClick(object sender, EventArgs e)
         {
-            this.txtId.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["idapresentacao"].Value);
+            this.dataListar.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListar_DoubleClick);
+            this.txtId.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["idproduto"].Value);
             this.txtNome.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["nome"].Value);
+            this.txtCodigo.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["codigo"].Value);
             this.txtDescricao.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["descricao"].Value);
+            byte[] imageBuffer = (byte[]) this.dataListar.CurrentRow.Cells["imagem"].Value;
             this.tabControl1.SelectedIndex = 1;
         }
     }
