@@ -235,25 +235,25 @@ namespace CamadaDado
         // Método BuscarNome
         public DataTable BuscarNome(DCategoria Categoria)
         {
-            DataTable dtResultado = new DataTable("Categoria");
+            DataTable dtResultado = new DataTable("categoria");
             SqlConnection SqlCon = new SqlConnection();
-
+            8
             try
             {
                 SqlCon.ConnectionString = Conexao.Cn;
                 SqlCommand SqlCmd = new SqlCommand();
-            
+                
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spbuscar_nome_categoria";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
                 SqlParameter parTextoBuscar = new SqlParameter();
                 parTextoBuscar.ParameterName = "@textoBuscar";
                 parTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 parTextoBuscar.Size = 50;
                 parTextoBuscar.Value = Categoria.TextoBuscar;
+                SqlCmd.Parameters.Add(parTextoBuscar);
 
-                SqlCmd.Parameters.Add(parTextoBuscar); 
-                SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "spbuscar_nome";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
-                
                 SqlDataAdapter sqlDat = new SqlDataAdapter(SqlCmd);
                 sqlDat.Fill(dtResultado);
 

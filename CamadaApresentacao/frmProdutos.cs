@@ -118,8 +118,8 @@ namespace CamadaApresentacao
         private void ComboArpesentacao()
         {
             cbApresentacao.DataSource = NApresentacao.Mostrar();
-            cbApresentacao.ValueMember = "IdApresentacao";
-            cbApresentacao.DisplayMember = "Nome";
+            cbApresentacao.ValueMember = "idapresentacao";
+            cbApresentacao.DisplayMember = "nome";
             /* Os objects que estão sendo chamados neste métodos fazem parte da CamadaDado
              * que remete os valores que estão dentro da camada 
              */

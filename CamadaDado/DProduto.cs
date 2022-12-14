@@ -36,6 +36,11 @@ namespace CamadaDado
             this.TextoBuscar = textoBuscar;
         }
 
+        public void MenssagemOk(string menssagem)
+        {
+            MessageBox.Show(menssagem, "O sistema está funcionando!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
 
         // Método Inserir
         public string Inserir(DProduto produto)
@@ -269,9 +274,9 @@ namespace CamadaDado
         }
 
         // Método BuscarNome
-        public DataTable BuscarNome(DProduto produto)
+        public DataTable BuscarNome(DProduto produtos)
         {
-            DataTable dtResultado = new DataTable("produto");
+            DataTable dtResultado = new DataTable("apresentacao");
             SqlConnection SqlCon = new SqlConnection();
 
             try
@@ -279,16 +284,17 @@ namespace CamadaDado
                 SqlCon.ConnectionString = Conexao.Cn;
                 SqlCommand SqlCmd = new SqlCommand();
 
-                SqlParameter parTextoBuscar = new SqlParameter();
-                parTextoBuscar.ParameterName = "@textoBuscar";
-                parTextoBuscar.SqlDbType = SqlDbType.VarChar;
-                parTextoBuscar.Size = 50;
-                parTextoBuscar.Value = produto.TextoBuscar;
-
-                SqlCmd.Parameters.Add(parTextoBuscar);
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "spbuscar_produto_nome";
+                SqlCmd.CommandText = "spbuscar_nome_produto";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter parTextoBuscar = new SqlParameter();
+                parTextoBuscar.ParameterName = "@textobuscar";
+                parTextoBuscar.SqlDbType = SqlDbType.VarChar;
+                parTextoBuscar.Size = 100;
+                parTextoBuscar.Value = produtos.TextoBuscar;
+                SqlCmd.Parameters.Add(parTextoBuscar);
+                
 
                 SqlDataAdapter sqlDat = new SqlDataAdapter(SqlCmd);
                 sqlDat.Fill(dtResultado);

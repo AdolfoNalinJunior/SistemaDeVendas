@@ -1,4 +1,5 @@
-﻿using CamadaNegocio;
+﻿using CamadaDado;
+using CamadaNegocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -87,7 +88,7 @@ namespace CamadaApresentacao
         }
 
         // Buscar Pelo nome
-        private void BuscarNome()
+        private void BuscarTexto()
         {
             this.dataListar.DataSource = NApresentacao.BuscarNome(this.txtBuscar.Text);
             this.OcultarColubas();
@@ -112,13 +113,13 @@ namespace CamadaApresentacao
         // Botão Buscar
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            BuscarNome();
+            
         }
 
         // textBox de Buscartexto 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            this.BuscarNome();
+            BuscarTexto();
         }
 
         // botão novo
