@@ -91,28 +91,29 @@ namespace CamadaApresentacao
         }
 
         // Ocultar as Colunas do Grid
-        private void OcultarColubas()
+        private void OcultarColunas()
         {
             this.dataListar.Columns[0].Visible = false;
             this.dataListar.Columns[1].Visible = false;
+            this.dataListar.Columns[2].Visible = false;
             this.dataListar.Columns[6].Visible = false;
-            this.dataListar.Columns[8].Visible = false;
+            
         }
 
         // MOstrar no DataGrid
         private void Mostrar()
         {
             this.dataListar.DataSource = NProduto.Mostrar();
-            this.OcultarColubas();
             this.lblTotal.Text = "Total de Registros: " + Convert.ToString(dataListar.Rows.Count);
+            this.OcultarColunas();
         }
 
         // Buscar Pelo nome
         private void BuscarNome()
         {
             this.dataListar.DataSource = NProduto.BuscarNome(this.txtBuscar.Text);
-            this.OcultarColubas();
             this.lblTotal.Text = "Total de Registros: " + Convert.ToString(dataListar.Rows.Count);
+            this.OcultarColunas();
         }
 
         private void ComboArpesentacao()
@@ -282,11 +283,6 @@ namespace CamadaApresentacao
             {
                 this.dataListar.Columns[0].Visible = false;
             }
-        }
-
-        private void dataListar_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void dataListar_DoubleClick(object sender, EventArgs e)
