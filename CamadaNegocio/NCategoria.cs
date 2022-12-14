@@ -40,7 +40,7 @@ namespace CamadaNegocio
         // Função Mostrar
         public static DataTable Mostrar()
         {
-            return new DApresentacao().Mostrar();
+            return new DCategoria().Mostrar();
         }
 
         // Fumção Mostrar

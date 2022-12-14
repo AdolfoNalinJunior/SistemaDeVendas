@@ -237,7 +237,7 @@ namespace CamadaDado
         {
             DataTable dtResultado = new DataTable("categoria");
             SqlConnection SqlCon = new SqlConnection();
-            8
+
             try
             {
                 SqlCon.ConnectionString = Conexao.Cn;
@@ -248,7 +248,7 @@ namespace CamadaDado
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter parTextoBuscar = new SqlParameter();
-                parTextoBuscar.ParameterName = "@textoBuscar";
+                parTextoBuscar.ParameterName = "@textobuscar";
                 parTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 parTextoBuscar.Size = 50;
                 parTextoBuscar.Value = Categoria.TextoBuscar;
