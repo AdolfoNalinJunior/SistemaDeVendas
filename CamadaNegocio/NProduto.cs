@@ -9,9 +9,21 @@ using CamadaDado;
 
 namespace CamadaNegocio
 {
+    /// <summary>
+    /// Classe de adiminstração dos Produtos
+    /// </summary>
     public class NProduto
     {
-        // Função inserir
+        /// <summary>
+        /// Função que realiza a inserção dos produtos
+        /// </summary>
+        /// <param name="nome">Nome do produto</param>
+        /// <param name="descricao">Descrição do Produto</param>
+        /// <param name="codigo">Código do proprio produto</param>
+        /// <param name="imagem">Imagem do produto</param>
+        /// <param name="idCategoria">Id da categoria, para buscar relacionar o tipo da cvat</param>
+        /// <param name="idApresentacao">Id da apresentação, para relacionar uma apresentação ao produto</param>
+        /// <returns></returns>
         public static string Inserir(string nome, string descricao, string codigo, byte[] imagem, int idCategoria, int idApresentacao)
         {
             DProduto Obj = new DProduto();
@@ -25,7 +37,17 @@ namespace CamadaNegocio
             return Obj.Inserir(Obj);
         }
 
-        // Função Editar
+        /// <summary>
+        /// Função que realiza a Edição 
+        /// </summary>
+        /// <param name="id">Id produto, esse valor não editavel</param>
+        /// <param name="nome">Nome do produto</param>
+        /// <param name="descricao">Descrição do produto</param>
+        /// <param name="codigo">Código do produto</param>
+        /// <param name="imagem">Imagem do produto</param>
+        /// <param name="idCategoria">Id da categoria</param>
+        /// <param name="idApresentacao">Id da apresentação</param>
+        /// <returns></returns>
         public static string Editar(int id,string nome, string descricao, string codigo,byte[] imagem, int idCategoria, int idApresentacao)
         {
             DProduto Obj = new DProduto();
@@ -39,7 +61,11 @@ namespace CamadaNegocio
             return Obj.Editar(Obj);
         }
 
-        // Função Deletar
+        /// <summary>
+        /// Função de deleção
+        /// </summary>
+        /// <param name="id">Chave de busca para a deleção</param>
+        /// <returns></returns>
         public static string Deletar(int id)
         {
             DProduto Obj = new DProduto();
@@ -47,13 +73,20 @@ namespace CamadaNegocio
             return Obj.Excluir(Obj);
         }
 
-        // Função Mostrar
+        /// <summary>
+        /// Função para mostrar os produtos na tabela
+        /// </summary>
+        /// <returns></returns>
         public static DataTable Mostrar()
         {
             return new DProduto().Mostrar();
         }
 
-        // Fumção Mostrar
+        /// <summary>
+        /// Função que Busca o nome do produto no banco de dados
+        /// </summary>
+        /// <param name="textoBuscar">Varável que busca pelo nome</param>
+        /// <returns></returns>
         public static DataTable BuscarNome(string textoBuscar)
         {
             DProduto Obj = new DProduto();

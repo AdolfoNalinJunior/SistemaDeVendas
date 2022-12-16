@@ -8,9 +8,17 @@ using CamadaDado;
 
 namespace CamadaNegocio
 {
+    /// <summary>
+    /// NApresentacao e relacionada a DApresentacao, é uma negociação entre C# e SQL
+    /// </summary>
     public class NApresentacao
     {
-        // Função inserir
+        /// <summary>
+        /// Função para inserir a apresentação
+        /// </summary>
+        /// <param name="nome">Nome da apresentação</param>
+        /// <param name="descricao">Descrição da apresentação</param>
+        /// <returns></returns>
         public static string Inserir(string nome, string descricao)
         {
             DApresentacao Obj = new DApresentacao();
@@ -19,7 +27,13 @@ namespace CamadaNegocio
             return Obj.Inserir(Obj);
         }
 
-        // Função Editar
+        /// <summary>
+        /// Função que realiza a Edição da apresentação
+        /// </summary>
+        /// <param name="idApresentacao">Id da apresentação</param>
+        /// <param name="nome">Nome da apresentação</param>
+        /// <param name="descricao">Descrição da apresentação</param>
+        /// <returns></returns>
         public static string Editar(int idApresentacao, string nome, string descricao)
         {
             DApresentacao Obj = new DApresentacao();
@@ -29,7 +43,11 @@ namespace CamadaNegocio
             return Obj.Editar(Obj);
         }
 
-        // Função Deletar
+        /// <summary>
+        /// Função de deleção da apresentação
+        /// </summary>
+        /// <param name="idApresentacao">chave da deleção</param>
+        /// <returns></returns>
         public static string Deletar(int idApresentacao)
         {
             DApresentacao Obj = new DApresentacao();
@@ -37,13 +55,20 @@ namespace CamadaNegocio
             return Obj.Excluir(Obj);
         }
 
-        // Função Mostrar
+        /// <summary>
+        /// Função que pega os dados do banco de dados e trás para mostrar no dataGrid
+        /// </summary>
+        /// <returns></returns>
         public static DataTable Mostrar()
         {
             return new DApresentacao().Mostrar();
         }
 
-        // Fumção Mostrar
+        /// <summary>
+        /// Função que realiza a busca das apresentações no banco de dados
+        /// </summary>
+        /// <param name="textoBuscar"></param>
+        /// <returns></returns>
         public static DataTable BuscarNome(string textoBuscar)
         {
             DApresentacao Obj = new DApresentacao();
