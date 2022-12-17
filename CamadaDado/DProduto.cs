@@ -8,8 +8,14 @@ using System.Data.SqlClient;
 
 namespace CamadaDado
 {
+    /// <summary>
+    /// Classe que faz a primeira relação dos dados nativos do banco de dados, da tablea db.produtos
+    /// </summary>
     public class DProduto
     {
+        /// <summary>
+        /// Variáveis do Objeto
+        /// </summary>
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
@@ -19,12 +25,26 @@ namespace CamadaDado
         public int IdApresentacao { get; set; }
         public string TextoBuscar { get; set; }
 
+        /// <summary>
+        /// Construtor vazio
+        /// </summary>
         public DProduto()
         {
 
         }
 
-        public DProduto(int id, string nome, string descricao, byte[] imagem, string codigo, int idCodigo, int idAprencia, string textoBuscar)
+        /// <summary>
+        /// Consturtor que faz o relacionamento entre os membros criados e os de input
+        /// </summary>
+        /// <param name="id">ID de entrada, esse elemento é alto-completado na inserção dele ao banco de dados, do tipo int</param>
+        /// <param name="nome">Nome de entrada, do tipo string</param>
+        /// <param name="descricao">Descrição de entrada</param>
+        /// <param name="imagem">Imagem de entrada, do tipo byte[]</param>
+        /// <param name="codigo">Códiigo de entrada, do  tipo int</param>
+        /// <param name="idCategoria">id de entrada da categoria (Relacionamento da categoria ao produto), do tipo int</param>
+        /// <param name="idAprencia">Id de entrada da categoria (Relacionamento da apresentação ao produto), do tipo int</param>
+        /// <param name="textoBuscar">Variável de entrada para buscar o produto, do tipo string</param>
+        public DProduto(int id, string nome, string descricao, byte[] imagem, string codigo, int idCategoria, int idAprencia, string textoBuscar)
         {
             this.Id = id;
             this.Nome = nome;
@@ -32,17 +52,26 @@ namespace CamadaDado
             this.Imagem = imagem;
             this.Codigo = codigo;
             this.IdApresentacao = idAprencia;
-            this.IdCategoria = idCodigo;
+            this.IdCategoria = idCategoria;
             this.TextoBuscar = textoBuscar;
         }
 
+        /// <summary>
+        /// MenssagemOk é um método para menssagem informativa ao usuário
+        /// </summary>
+        /// <param name="menssagem">Entrada da menssagem, do tipo string</param>
         public void MenssagemOk(string menssagem)
         {
             MessageBox.Show(menssagem, "O sistema está funcionando!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-
-        // Método Inserir
+        /// <summary>
+        /// Função de inserção dos produtos na tabela db.produtos
+        /// </summary>
+        /// <param name="produto">Nome do produto que vai ser inserido</param>
+        /// <exception cref="ArgumentException"
+        /// <exception cref="ArgumentNullException"
+        /// <returns></returns>
         public string Inserir(DProduto produto)
         {
             SqlConnection SqlCon = new SqlConnection();
@@ -125,8 +154,13 @@ namespace CamadaDado
             return resp;
         }
 
-
-        // Método Editar
+        /// <summary>
+        /// Está função é responsável por recuperar os parametros necessarios do banco de dados, para que seja realiza a edição.
+        /// </summary>
+        /// <param name="produto">Parametro chave de busca do produto para que seja feita a edição</param>
+        /// <exception cref="ArgumentNullException"
+        /// <exception cref="ArgumentException"
+        /// <returns>OK (Se a edição foi bem sucedida || A edição não foi feita</returns>
         public string Editar(DProduto produto)
         {
             SqlConnection SqlCon = new SqlConnection();
@@ -208,7 +242,11 @@ namespace CamadaDado
             return resp;
         }
 
-        // Método de Excluir
+        /// <summary>
+        /// Essa função realiza a exclusão do banco de dados
+        /// </summary>
+        /// <param name="produto">Parametro chave para que seja feita a exclusão do produto desejado</param>
+        /// <returns></returns>
         public string Excluir(DProduto produto)
         {
             SqlConnection SqlCon = new SqlConnection();
@@ -251,7 +289,10 @@ namespace CamadaDado
             return resp;
         }
 
-        // Método mostrar
+        /// <summary>
+        /// Função que busca a os dados do banco de dados e mostra no dataGrid do frmProdutos   
+        /// </summary>
+        /// <returns></returns>
         public DataTable Mostrar()
         {
             DataTable dtResultado = new DataTable();
@@ -273,10 +314,14 @@ namespace CamadaDado
             return dtResultado;
         }
 
-        // Método BuscarNome
+        /// <summary>
+        /// Função que realiza a busca do produto no banco de dados
+        /// </summary>
+        /// <param name="produtos">Parametro chave, para a busca do produto</param>
+        /// <returns></returns>
         public DataTable BuscarNome(DProduto produtos)
         {
-            DataTable dtResultado = new DataTable("apresentacao");
+            DataTable dtResultado = new DataTable("produto");
             SqlConnection SqlCon = new SqlConnection();
 
             try
