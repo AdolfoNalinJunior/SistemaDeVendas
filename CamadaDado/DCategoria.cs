@@ -9,30 +9,49 @@ using System.Data.SqlTypes;
 
 namespace CamadaDado
 {
+    /// <summary>
+    /// Classe que é responsável por trazer os dados do banco de dados e mander a conexão da tabela db.categoria
+    /// </summary>
     public class DCategoria
     {
+        /// <summary>
+        /// Membros da classe 
+        /// </summary>
         public int IdCategoria { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public string TextoBuscar { get; set; }
 
-        // Construtor Vazio
+        /// <summary>
+        /// Construtor vazio
+        /// </summary>
         public DCategoria()
         {
 
         }
 
-        // Construtor com Parâmetros
+        /// <summary>
+        /// Construtor com os parametros
+        /// </summary>
+        /// <param name="idCategoria">Id de entrada da categoria</param>
+        /// <param name="nome">Nome de entrada da categoria</param>
+        /// <param name="descricao">Descrição de entrada da categoria</param>
+        /// <param name="textoBuscar">Parametro de entrada para que seja realizada a busca da categoria no banco de dados</param>
         public DCategoria(int idCategoria, string nome, string descricao, string textoBuscar)
         {
-            // Criando relacionamento com os campos privados
             this.IdCategoria = idCategoria;
             this.Nome = nome;
             this.Descricao = descricao;
             this.TextoBuscar = textoBuscar;
         }
 
-        // Método Inserir
+        /// <summary>
+        /// Função de inserção da categoria no banco de dados
+        /// </summary>
+        /// <param name="categoria">Parametro de entrada, para a inserção da categoria</param>
+        /// <exception cref="ArgumentException"
+        /// <exception cref="ArgumentNullException"
+        /// <returns></returns>
         public string Inserir(DCategoria categoria)
         {
             // Criando o Objeto Connection e dando o nome de SqlCon (Con = Conexão)
@@ -97,20 +116,27 @@ namespace CamadaDado
             }
             finally
             {
-                // Si o status da minha conexao for igual a aberta, pode fechar
+                // Si o status da minha conexao estiver aberta, ela pode ser fechada
                 if (SqlCon.State == ConnectionState.Open)
                 {
                     SqlCon.Close();
                 }
                 else
                 {
+                    // Se ele estiver aberta, retornara a messagem para o usuário
                     resp = "A conexão não foi aberta, não é possível ser fechada!! ";
                 }
             }
             return resp;
         }
 
-        // Método Editar
+        /// <summary>
+        /// Função que realiza a edição da categoria, e tráz as informações do banco de dados
+        /// </summary>
+        /// <param name="categoria">Parametro de entrada para localizar a categoria no banco de dados</param>
+        /// <excepiton cref="ArgumentException"
+        /// <exception cref="ArgumentNullException"
+        /// <returns></returns>
         public string Editar(DCategoria categoria)
         {
             SqlConnection SqlCon = new SqlConnection();
@@ -167,7 +193,13 @@ namespace CamadaDado
             return resp;
         }
         
-
+        /// <summary>
+        /// Função de exclusão das categoria do banco de dados
+        /// </summary>
+        /// <param name="categoria">Parametro de entrada para localizar as categoria no banco de dados</param>
+        /// <exception cref="ArgumentNullException"
+        /// <exception cref="ArgumentException"
+        /// <returns></returns>
         public string Excluir(DCategoria categoria)
         {
         SqlConnection SqlCon = new SqlConnection();
@@ -210,7 +242,12 @@ namespace CamadaDado
           return resp;
     }
     
-        // Método mostrar
+        /// <summary>
+        /// Função que busca os dados dentro do banco de dados para mostrar no dataGrid 
+        /// </summary>
+        /// <exception cref="ArgumentException"
+        /// <exception cref="ArgumentNullException"
+        /// <returns></returns>
         public DataTable Mostrar()
         {
             DataTable dtResultado = new DataTable();
@@ -232,7 +269,13 @@ namespace CamadaDado
             return dtResultado;
         }
 
-        // Método BuscarNome
+        /// <summary>
+        /// Função que realiza a busca da categoria dentro do banco de dados
+        /// </summary>
+        /// <param name="Categoria">Parametros de entrada para realizar a busca</param>
+        /// <exception cref="ArgumentException"
+        /// <exception cref="ArgumentNullException"
+        /// <returns></returns>
         public DataTable BuscarNome(DCategoria Categoria)
         {
             DataTable dtResultado = new DataTable("categoria");
