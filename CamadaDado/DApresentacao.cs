@@ -9,18 +9,34 @@ using System.Data.SqlClient;
 
 namespace CamadaDado
 {
+    /// <summary>
+    /// Classe responsavél por realizar a conexão do banco de dados com a tabela apesentação
+    /// </summary>
     public class DApresentacao
     {
+        /// <summary>
+        /// Membros resposaveis da classe
+        /// </summary>
         public int IdApresentacao { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public string TextoBuscar { get; set; }
 
+        /// <summary>
+        /// Construtor vazio
+        /// </summary>
         public DApresentacao()
         {
 
         }
 
+        /// <summary>
+        /// Construtor com parametros
+        /// </summary>
+        /// <param name="idApresentacao">Parametro de entrada do <paramref name="idApresentacao"/></param>
+        /// <param name="nome">Parametro de entrada do <paramref name="nome"/> da apresentação adicionada</param>
+        /// <param name="descricao">Parametor de entrada da <paramref name="descricao"/></param>
+        /// <param name="textoBuscar">Parametro de pesquisa na tabela apresentacao</param>
         public DApresentacao(int idApresentacao, string nome, string descricao, string textoBuscar)
         {
             this.IdApresentacao = idApresentacao;
@@ -29,7 +45,13 @@ namespace CamadaDado
             this.TextoBuscar = textoBuscar;
         }
 
-        // Método Inserir
+        /// <summary>
+        /// Função de inserção das apresentações
+        /// </summary>
+        /// <param name="apresentacao">Parametro chave para a inserção do apresentação</param>
+        /// <exception cref="ArgumentException"
+        /// <exception cref="ArgumentNullException"
+        /// <returns>Se a inserção for feita o valor sera ok, se acaso não for o valor é </returns>
         public string Inserir(DApresentacao apresentacao)
         {
             SqlConnection SqlCon = new SqlConnection();
@@ -66,7 +88,7 @@ namespace CamadaDado
                 SqlCmd.Parameters.Add(parDescricao);
 
                 // Verificação da inserção
-                resp = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "Registro não foi registrado";
+                resp = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "A apresentação não foi inseridaw";
                 return resp;
             }
             catch (Exception e)
@@ -87,7 +109,11 @@ namespace CamadaDado
             return resp;
         }
 
-        // Método Editar
+        /// <summary>
+        /// Função que realiza a edição da Apresentação no banco de dados
+        /// </summary>
+        /// <param name="apresentacao">Parametro chave para realizar a edição <paramref name="DApresentacao"</param>
+        /// <returns></returns>
         public string Editar(DApresentacao apresentacao)
         {
             SqlConnection SqlCon = new SqlConnection();
@@ -144,7 +170,13 @@ namespace CamadaDado
             return resp;
         }
 
-        // Método de Excluir
+        /// <summary>
+        /// Função que realiza a deleção da tabela <paramref name="apresentacao"
+        /// </summary>
+        /// <param name="apresentacao">Parametro chave para realizar a deleção</param>
+        /// <exception cref="ArgumentException"
+        /// <exception cref="ArgumentNullException"
+        /// <returns></returns>
         public string Excluir(DApresentacao apresentacao)
         {
             SqlConnection SqlCon = new SqlConnection();
@@ -187,7 +219,12 @@ namespace CamadaDado
             return resp;
         }
 
-        // Método mostrar
+        /// <summary>
+        /// Função que pega os parametros da tabela <paramref name="apresentacao">tabela do banco de dados</paramref>e mostra no dataGrid
+        /// </summary>
+        /// <exception cref="ArgumentException"
+        /// <exception cref="ArgumentNullException"
+        /// <returns></returns>
         public DataTable Mostrar()
         {
             DataTable dtResultado = new DataTable();
@@ -209,7 +246,13 @@ namespace CamadaDado
             return dtResultado;
         }
 
-        // Método BuscarNome
+        /// <summary>
+        /// Função que realiza a tradução do procedimento de busca pelo nome, da tabela <paramref name="apresentacao">Tabela do banco de dados db.comercio</paramref>
+        /// </summary>
+        /// <param name="apresentacao">Parametro chave para realizar a busca </param>
+        /// <exception cref="ArgumentException"
+        /// <exception cref="ArgumentNullException"
+        /// <returns></returns>
         public DataTable BuscarNome(DApresentacao apresentacao)
         {
             DataTable dtResultado = new DataTable("apresentação");
