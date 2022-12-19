@@ -13,12 +13,24 @@ using CamadaNegocio;
 
 namespace CamadaApresentacao
 {
+    /// <summary>
+    /// frmProduto é a tela da configuração dos produtos, sendo essas: 
+    /// </summary>
     public partial class frmProdutos : Form
     {
+        /// <summary>
+        /// Parametro de verificação de validade dos botões 
+        /// </summary>
+        /// <param name="Verificacao"></param>
+        /// <param name="eNovo">Parametro de vericação do <paramref name="btnNovo"</param>
+        /// <param name="eEditar">Parametro de verificação do <paramref name="btnEdidar"</param>
         public bool Verificacao { get; set; }
         bool eNovo = false;
         bool eEditar = false;
 
+        /// <summary>
+        /// Construtor com as mesagens de ToolTip, para orientar o usuário na inicialisão do sistema
+        /// </summary>
         public frmProdutos()
         {
             InitializeComponent();
@@ -31,19 +43,27 @@ namespace CamadaApresentacao
             this.ComboArpesentacao();
         }
 
-        // Mostrar mensagem de Confirmação
+        /// <summary>
+        /// Método de menssagem de informaçãp, menssagem do tipo MessageBox com icone de Informação
+        /// </summary>
+        /// <param name="mensagem">Menssagem que vai aparecer na MessageBox</param>
         private void MensagemOk(string mensagem)
         {
             MessageBox.Show(mensagem, "Sistema Comércio", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        // Mostrar mensagem de Erro
+        /// <summary>
+        /// Método de menssagem erro, menssagem do tipo MassageBox com icone de Error 
+        /// </summary>
+        /// <param name="mensagem">Menssagem que vai aparecer no MessageBox</param>
         private void MensagemErro(string mensagem)
         {
             MessageBox.Show(mensagem, "Sistema Comércio", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        // Limpar
+        /// <summary>
+        ///  Método privado para realizar a limpeza dos campos
+        /// </summary>
         private void Limpar()
         {
             this.txtNome.Text = string.Empty;
@@ -56,7 +76,10 @@ namespace CamadaApresentacao
             this.pxImagem.Image = global::CamadaApresentacao.Properties.Resources.BUSCA;
         }
 
-        // Habilitar text box
+        /// <summary>
+        /// Método de habilitação dos botões
+        /// </summary>
+        /// <param name="valor">Valor de true or false</param>
         private void Habilitar(bool valor)
         {
             this.txtNome.ReadOnly = !valor;
@@ -69,7 +92,9 @@ namespace CamadaApresentacao
             this.btnLimparImagem.Enabled = valor;
         }
 
-        // Habilitar Botões
+        /// <summary>
+        /// Método de verificação dos botões <paramref name="btnNovo"> e <paramref name="btnEditar"
+        /// </summary>
         private void Botoes()
         {
             if (this.eNovo || this.eEditar)
@@ -89,8 +114,10 @@ namespace CamadaApresentacao
                 this.btnCancelar.Enabled = false;
             }
         }
-
-        // Ocultar as Colunas do Grid
+        
+        /// <summary>
+        /// Método que realiza a seleção das colunas do dataGrid
+        /// </summary>
         private void OcultarColunas()
         {
             this.dataListar.Columns[0].Visible = false;
@@ -100,7 +127,9 @@ namespace CamadaApresentacao
             
         }
 
-        // MOstrar no DataGrid
+        /// <summary>
+        /// Método que tráz os dados da tabela 
+        /// </summary>
         private void Mostrar()
         {
             this.dataListar.DataSource = NProduto.Mostrar();
@@ -108,14 +137,19 @@ namespace CamadaApresentacao
             this.OcultarColunas();
         }
 
-        // Buscar Pelo nome
+        /// <summary>
+        /// Método que realiza a busca do nome do produto baseado no parametro passado no <paramref name="txtBuscar">Caixa de texto que recebe os valores de busca</paramref>
+        /// </summary>
         private void BuscarNome()
         {
             this.dataListar.DataSource = NProduto.BuscarNome(this.txtBuscar.Text);
-            this.lblTotal.Text = "Total de Registros: " + Convert.ToString(dataListar.Rows.Count);
+            this.lblTotal.Text = $"Total de Registros: {Convert.ToString(dataListar.Rows.Count)}";
             this.OcultarColunas();
         }
 
+        /// <summary>
+        /// Combo da apresentação na tela do produto
+        /// </summary>
         private void ComboArpesentacao()
         {
             cbApresentacao.DataSource = NApresentacao.Mostrar();
@@ -126,6 +160,11 @@ namespace CamadaApresentacao
              */
         }
 
+        /// <summary>
+        /// Método de inicialicão da tela, indicando o local da tela onde ele ira aparecer e quais os métodos que vão iniciar com a tela
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmProdutos_Load(object sender, EventArgs e)
         {
             this.Top = 0;
@@ -293,7 +332,69 @@ namespace CamadaApresentacao
             this.txtCodigo.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["codigo"].Value);
             this.txtDescricao.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["descricao"].Value);
             byte[] imageBuffer = (byte[]) this.dataListar.CurrentRow.Cells["imagem"].Value;
+            MemoryStream ms = new MemoryStream(imageBuffer);
+            /*
+             * ms é o espaço na memeoria que a imagem vai ser gurdada e o System.drawing.Imaging.ImagemFormat.png 
+             * é a definição de qual o tipo de formato que vai ser gurdaddo
+             */
+            this.pxImagem.Image = Image.FromStream(ms);
+            this.pxImagem.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.txtIdCategoria.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["idcategoria"].Value);
+            this.txtNomeCategoria.Text = Convert.ToString(this.dataListar.CurrentRow.Cells["Categoria"].Value);
+            this.cbApresentacao.SelectedValue = Convert.ToString(this.dataListar.CurrentRow.Cells["idapresentacao"].Value);
+
             this.tabControl1.SelectedIndex = 1;
+        }
+
+        private void dataListar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataListar.Columns["Deletar"].Index)
+            {
+                // Validação check box Deletar
+                DataGridViewCheckBoxCell ChkDeletar = (DataGridViewCheckBoxCell)dataListar.Rows[e.RowIndex].Cells["Deletar"];
+                ChkDeletar.Value = !Convert.ToBoolean(ChkDeletar.Value);
+            }
+        }
+
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult Opcao;
+                Opcao = MessageBox.Show("Realmente deseja apagar os Registros?", "Sistema Comercio", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (Opcao == DialogResult.OK)
+                {
+                    string codigo;
+                    string resp;
+
+                    foreach (DataGridViewRow row in dataListar.Rows)
+                    {
+                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        {
+                            codigo = Convert.ToString(row.Cells[1].Value);
+                            resp = NProduto.Deletar(Convert.ToInt32(codigo));
+                            if (resp.Equals("OK"))
+                            {
+                                this.MensagemOk("Registros excluido com sucesso.");
+                            }
+                            else
+                            {
+                                this.MensagemErro(resp);
+                            }
+                        }
+                    }
+                    this.Mostrar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void btnBuscarCategoria_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
