@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CamadaDado
 {
+    /// <summary>
+    /// Classe que realiza a conexão do banco de dados
+    /// </summary>
     internal class Conexao
     {
         // Interação da classe com o banco de Dados
